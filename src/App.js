@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from './componentes/Header';
 import Formulario from './componentes/Formulario';
 import ErrorAlert from './componentes/Error';
+import Clima from './componentes/Clima';
 
 
 class App extends Component {
@@ -11,8 +12,11 @@ class App extends Component {
     error: ''
   }
  // se llama el metodo de consulta de API dentro de este ciclo
-  componentDidUpdate(){
-    this.consultarApi();
+  componentDidUpdate(prevProps, prevState){
+    if (prevState.consulta !== this.state.consulta){
+      this.consultarApi();
+    }
+
   }
 
   // Con metodos de react creamos el estado inicial del error (cuando carga el componente)
@@ -59,13 +63,14 @@ class App extends Component {
       });
     } else{
       this.setState({
-        consulta: respuesta
+        consulta: respuesta,
+        error: false
       })
     }
   }
 
   render(){
-    // Logica para alerta (Error)
+    // Logica para alerta (Error), el else quedo pendiente porque era necesario primero conectar con API.
     // Declaramos una constante con la llamada a error dentro del state
     const error = this.state.error;
     // declaramos una variable resultado
@@ -74,6 +79,7 @@ class App extends Component {
     if (error){
       resultado = <ErrorAlert mensajeError= "Ambos campos son obligatorios"/>
      } else{
+       resultado = <Clima resultado= {this.state.resultado}/>
 
      }
 
