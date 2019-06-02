@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 
 class Clima extends Component {
     
-    mostrarResultado = () => {
+    
+     mostrarResultado = () => {
         // obtener los datos de la consulta
         const {name, weather, main} = this.props.resultado;
 
@@ -25,10 +26,10 @@ class Clima extends Component {
                 </div>
             </div>
         )
-    }
+    };
 
     render(){
-        console.log(this.props.resultado);
+        //console.log(this.props.resultado);
         return(
             <div className = "container">
                 {this.mostrarResultado()}

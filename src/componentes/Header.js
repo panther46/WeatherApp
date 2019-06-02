@@ -1,12 +1,12 @@
 import React from 'react';
 
 
-const Header = (props) => {
+function Header({titulo}){
     return(
         <div>
             <nav>
                 <div className = "nav-wrapper custom-blue darken-2">
-                    <a className = "brand-logo custom-yellow"href="false">{props.titulo}</a>
+                    <a className = "brand-logo custom-yellow"href="#!">{titulo}</a>
                 </div>
             </nav>
         </div>

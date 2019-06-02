@@ -1,65 +1,42 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 
-class Formulario extends Component{
-    // Creando Refs
-    CiudadRef = React.createRef();
-    PaisRef = React.createRef();
+function Formulario(){
 
-
-    // Metodo de Form onSubmit
-    buscarClima = (e) =>{
-        // Prevent Default
-        e.preventDefault();
-
-        // Leer Refs y creacion de objeto
-        const respuesta = {
-            Ciudad: this.CiudadRef.current.value,
-            Pais: this.PaisRef.current.value
-        }
-        //console.log(respuesta);
-
-        // Enviar por props
-        this.props.datosConsulta(respuesta);
-
+    const handleChange = (e) =>{
+        //Cambiando el state de esta funcion (aproach de hooks)
     }
 
-    render(){
-        return(
-            <div className= "contenedor-form">
-                <div className="container">
-                    <div className="row">
-                    <form onSubmit = {this.buscarClima}>
-                        <div className = "input-field col s12 m8 l4 offset-m2">
-                            <input ref = {this.CiudadRef} id= "ciudad" type="text" />
-                            <label htmlFor="ciudad">Ciudad:</label>
-                        </div>
-                        <div className = "input-field col s12 m8 l4 offset-m2">
-                            <select ref = {this.PaisRef}>
-                                <option value = "" defaultValue>Elige un Pais</option>
-                                <option value = "AR">Argentina</option>
-                                <option value = "CO">Colombia</option>
-                                <option value = "CR">Costa Rica</option>
-                                <option value = "ES">España</option>
-                                <option value = "US">Estados Unidos</option>
-                                <option value = "MX">Mexico</option>
-                                <option value = "PE">Peru</option>
-                            </select>
-                            <label htmlFor="pais">Pais</label>
-                        </div>
-                        <div className = "input-field col s12 m8 l4 offset-2 buscador">
-                            <input type = "submit" className = "waves-effect waves-light btn-large custom-yellow-button accent-4" value = "Buscar" />
-                        </div>
-
-                        
-                    </form>
-
-                    </div>
-                </div>
+    return(
+        <form>
+            <div className= "input-field col s12">
+                <input
+                    type="text"
+                    name="Ciudad"
+                    id= "Ciudad"
+                    onChange={handleChange}
+                />
+                <label htmlFor="Ciudad"> Ciudad:</label> 
             </div>
-        )
-    }     
-}
+
+            <div className= "input-field col s12">
+                <select onChange={handleChange} name= "pais">
+                    <option value ="">Selecciona un Pais</option>
+                    <option value = "US">Estados Unidos</option>
+                    <option value = "MX">Mexico</option>
+                    <option value = "AR">Argentina</option>
+                    <option value = "CO">Colombia</option>
+                    <option value = "CR">Costa Rica</option>
+                    <option value = "PE">Peru</option>
+                </select>
+            </div>
+            <div className="input-field" col s12>
+                <input type = "submit" className = "waves-efect btn-large btn-block yellow accent-4" value = "Buscar Clima"/>
+            </div>
+        </form>
+    )
+};
+    
 
 export default Formulario;
 
