@@ -1,19 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 
-function Formulario(){
+//2/recibimos la funcion de app datosConsulta por distructuring
+function Formulario({datosConsulta}){
+
+    // uso de USESTATE, la funcion devuelve dos variables que las obtenemos por destructuring, incluiimos como parametros ciudad y pais
+    const [busqueda,guardarBusqueda] = useState({
+        ciudad:'',
+        pais:''
+    })
 
     const handleChange = (e) =>{
         //Cambiando el state de esta funcion (aproach de hooks)
+        // 1--> Tomamos una copia del state, en este caso tiene el nombre de "busqueda"  y luego sobreescribimos el elemento
+        guardarBusqueda({
+            ...busqueda,
+            [e.target.name]:e.target.value
+        })
+        
+    }
+    //3/ Metodo que creamos para conectar todo con el componente principal  y es el que activa el onSubmit, se incluye la funcion que viene del padre datosConsulta() con el parametro busqueda el cual es el estado y se resume en la busqueda que hace el usuario
+    const consultarClima = (e) =>{
+        e.preventDefault();
+        datosConsulta(busqueda);
     }
 
     return(
-        <form>
+        <form onSubmit={consultarClima}>
             <div className= "input-field col s12">
                 <input
                     type="text"
-                    name="Ciudad"
-                    id= "Ciudad"
+                    name="ciudad"
+                    id= "ciudad"
                     onChange={handleChange}
                 />
                 <label htmlFor="Ciudad"> Ciudad:</label> 
@@ -30,7 +48,7 @@ function Formulario(){
                     <option value = "PE">Peru</option>
                 </select>
             </div>
-            <div className="input-field" col s12>
+            <div className="input-field col s12">
                 <input type = "submit" className = "waves-efect btn-large btn-block yellow accent-4" value = "Buscar Clima"/>
             </div>
         </form>
