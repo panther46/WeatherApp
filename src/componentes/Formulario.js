@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 //2/recibimos la funcion de app datosConsulta por distructuring
 function Formulario({datosConsulta}){
 
-    // uso de USESTATE, la funcion devuelve dos variables que las obtenemos por destructuring, incluiimos como parametros ciudad y pais
+    // uso de USESTATE, la funcion devuelve dos variables que las obtenemos por destructuring, incluiimos como parametros ciudad y pais. Aqui estamos preparando el objeto que recibe el formulario
     const [busqueda,guardarBusqueda] = useState({
         ciudad:'',
         pais:''

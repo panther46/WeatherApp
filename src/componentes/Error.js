@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-function ErrorAlert = ({mensaje}) =>{
+function Error({mensaje}){
 
     return(
         <div className = "card-panel red darken-4 error col s12">
@@ -13,4 +13,4 @@ function ErrorAlert = ({mensaje}) =>{
 }
 
 
-export default ErrorAlert;
+export default Error;
