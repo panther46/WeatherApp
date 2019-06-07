@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Header from './componentes/Header';
 import Formulario from './componentes/Formulario';
 import Error from './componentes/Error';
+import Clima from './componentes/Clima';
 
 
 
@@ -63,16 +64,20 @@ function App () {
   if (error){
     componente = <Error mensaje = "Ambos campos estan vacios"/>
 
+  } else if(resultado.cod === "404"){
+    componente = <Error mensaje = "La Ciudad no Existe" />
   }
   else{
-    componente = null;
+    componente = <Clima
+    resultado = {resultado}
+    />;
   }
 
 
     return (
     <div>
         <Header 
-        titulo= "Otra APP de React con HOOKS"
+        titulo= "OpenWeather APP"
          />
       <div className = "contenedor-form">
         <div className = "container">
