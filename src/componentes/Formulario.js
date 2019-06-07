@@ -49,7 +49,7 @@ function Formulario({datosConsulta}){
                 </select>
             </div>
             <div className="input-field col s12">
-                <input type = "submit" className = "waves-efect btn-large btn-block yellow accent-4" value = "Buscar Clima"/>
+                <input type = "submit" className = "waves-efect btn-large btn-block custom-yellow-button accent-4" value = "Buscar Clima"/>
             </div>
         </form>
     )
